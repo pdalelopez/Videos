@@ -43,10 +43,8 @@ public class Main
 					System.out.println("ERROR! Answer should be SI or NO");
 					System.out.println("Do you want to add other user?");
 					userAnswer = input.next().toLowerCase();
-				  }
-				
+				  }	
 			}
-		
 		} while (isOtherUser);
 		
 		// Entering user to logging
@@ -58,13 +56,13 @@ public class Main
 		// checking is User exist in the list
 		for(int i =0 ; i< userList.size(); i++) 
 		{
-			if (userList.get(i).UserName.equals(logUserName)) 
+			if (userList.get(i).getUserName().equals(logUserName)) 
 			{
-				if(userList.get(i).PassWord.equals(logPassWord)) 
+				if(userList.get(i).getPassWord().equals(logPassWord)) 
 				{
 					logUser = userList.get(i);
 					i=userList.size();
-					System.out.println("Welcome "+logUser.Name);
+					System.out.println("Welcome "+logUser.getName());
 					isUserExist = true;
 				}else 
 				 {
