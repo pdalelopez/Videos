@@ -9,7 +9,7 @@ public class Main
 		ArrayList<User> userList;
 		User logUser;
 		String logUserName,logPassWord;
-		boolean isOtherUser;
+		boolean isUserExist,isOtherUser;
 		int counter;
 		Scanner input;
 		
@@ -41,7 +41,7 @@ public class Main
 				 }else 
 				  {
 					System.out.println("ERROR! Answer should be SI or NO");
-					System.out.println();
+					System.out.println("Do you want to add other user?");
 					userAnswer = input.next().toLowerCase();
 				  }
 				
@@ -49,8 +49,32 @@ public class Main
 		
 		} while (isOtherUser);
 		
+		// Entering user to logging
+		System.out.println("Enter your \"username\"");
+		logUserName = input.next();
+		System.out.println("Enter your \"password\"");
+		logPassWord = input.next();
 		
-
+		// checking is User exist in the list
+		for(int i =0 ; i< userList.size(); i++) 
+		{
+			if (userList.get(i).UserName.equals(logUserName)) 
+			{
+				if(userList.get(i).PassWord.equals(logPassWord)) 
+				{
+					logUser = userList.get(i);
+					i=userList.size();
+					System.out.println("Welcome "+logUser.Name);
+					isUserExist = true;
+				}else 
+				 {
+					System.out.println("this user do not exist");
+					isUserExist = false;
+				 }
+				
+			}
+		}
+			
 	}
 	
 	// create new user
