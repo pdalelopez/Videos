@@ -45,36 +45,40 @@ public class Main
 		 {
 			System.out.println("this user do not exist");
 			System.out.println("Fatal ERROR");
-		 }
-		
-		
-
-			
+		 }	
 	}
 	
-		// method checks if User exist in the list
+		
 	
-	public static User checkUser(String logUserName,String logPassWord,ArrayList<User> usersList ) {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// method checks if User exist in the list
+	
+	public static User checkUser(String logUserName,String logPassWord,ArrayList<User> usersList ) 
+	{
 		
 		User logUser = new User();
 		
-		for(int i =0 ; i< usersList.size(); i++) 
+		for(User user: usersList) 
 		{
-			if (usersList.get(i).getUserName().equals(logUserName)) 
+			if ((user.getUserName().equals(logUserName))&&((user.getPassWord().equals(logPassWord)))) 
 			{
-				if(usersList.get(i).getPassWord().equals(logPassWord)) 
-				{
-					logUser = usersList.get(i);
-					i=usersList.size();
-				}else 
-				 {
-					isUserExist = false;
-				 }
-			}
+					logUser = user;
+			}else 
+			 {
+				isUserExist = false;
+			 }
 			
 		}
 		return logUser;
-	}
+	 }
 	
 	//create user'list
 	
