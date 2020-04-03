@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Main 
 {
@@ -22,7 +23,7 @@ public class Main
 			usersList.add(user1);
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			System.out.println(e.getMessage());;
 		}
 		try
 		{
@@ -30,7 +31,7 @@ public class Main
 			usersList.add(user2);
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			System.out.println(e.getMessage());;
 		}
 
 		
@@ -49,9 +50,11 @@ public class Main
 		
 			switch (userAnswer)
 			{
+			
 			case "1":
 				//adding user to array list using "createUser" method
 				User newUser;
+				
 				try
 				{
 					newUser = createUser(input);
@@ -59,11 +62,12 @@ public class Main
 					System.out.println(usersList.toString());
 				} catch (Exception e)
 				{
-					e.printStackTrace();
+					System.out.println(e.getMessage());;
 				}
 				
-			
+				 System.out.println("----------------");
 				break;
+			
 			case "2":
 				// Entering user to logging
 				String logUserName,logPassWord;
@@ -88,57 +92,69 @@ public class Main
 					{	
 						System.out.println("You can do:");
 						System.out.println("1-Create a video");
-						System.out.println("2-Show Video'list");
-						System.out.println("3-Search one video  by key word or tag");
+						System.out.println("2-Show video'list");
+						System.out.println("3-Search one video by key word or tag");
 						System.out.println("4-Log-out");
 						String loggedUserAnswer = input.next();
 						
 						switch (loggedUserAnswer)
 						{
+						
 						case "1":
-							Video newVideo = loggedUser.createVideo(input);
-							loggedUser.addVideoInList(newVideo);
+							Video newVideo;
+							try
+							{
+								newVideo = loggedUser.createVideo(input);
+								loggedUser.addVideoInList(newVideo);
+							} catch (Exception e)
+								{
+								System.out.println(e.getMessage());
+								}
 							break;
+						
 						case "2":
 							System.out.println(loggedUser.getVideoList().toString());
 							break;
+						
 						case "3":
-							System.out.println("la #3");
+							System.out.println("Enter one word");
+							
 							break;
+						
 						case "4":
 							isAnotherLogAction= false;
 							break;
+						
 						default:
 							System.out.println("It is not a rigth choise");
 							break;
 						}
-					System.out.println("----------------");
 					}while(isAnotherLogAction);
 				}else 
 				 {
 					System.out.println("this user do not exist");
 				 }	
-				
+				System.out.println("----------------");
 				break;
+			
 			case "3":
 				System.out.println("Closing App");
 				System.out.println(".");
 				System.out.println(".");
 				System.out.println("Closed");
 				isAnotherAction = false;
+				input.close();
 				break;
 
 			default:
 				System.out.println("It is not a rigth choise");
+				System.out.println("----------------");
 				break;
 			}
-		System.out.println("----------------");	
 		} while (isAnotherAction);
 		
 	}
-	
-	
-	
+//---------------------------------------------------------------------------------------------------
 	
 	// method checks if User exist in the list
 	
@@ -156,7 +172,6 @@ public class Main
 					break;
 			}
 		}
-		
 		if (logUser == null)
 		 {
 			isUserExist = false;
@@ -172,20 +187,28 @@ public class Main
 		newUser = new User();
 		
 		System.out.println("username");
-		newUser.setUserName(input.next());
+		newUser.setUserName(JOptionPane.showInputDialog("UserName"));
 		System.out.println("name");
-		newUser.setName(input.next());
+		newUser.setName(JOptionPane.showInputDialog("name"));
 		System.out.println("lastname");
-		newUser.setLastName(input.next());
+		newUser.setLastName(JOptionPane.showInputDialog("lastname"));
 		System.out.println("passWord");
-		newUser.setPassWord(input.next());
+		newUser.setPassWord(JOptionPane.showInputDialog("passWord"));
 		newUser.setRegisterDate(new Date());
-		System.out.println("----------------");
-		System.out.println(newUser);
-		System.out.println("----------------");
-		
+		newUser.setVideoList(new ArrayList<Video>());
 		return newUser;
 	}
 
 
+}
+
+class NullValueException extends Exception
+{
+	public NullValueException()
+	{
+	}
+	public NullValueException(String error_message) 
+	{
+		super(error_message);
+	}
 }

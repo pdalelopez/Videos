@@ -8,7 +8,7 @@ public class Video
 
 	
 	
-	public Video (String url, String tytle) 
+	public Video (String url, String tytle) throws Exception
 	{
 		this.setUrl(url);
 		this.setTytle(tytle) ;
@@ -21,21 +21,34 @@ public class Video
 
 	public String getTytle() 
 	{
-		return Tytle;
+		return this.Tytle;
 	}
-	public void setTytle(String tytle) 
+	public void setTytle(String tytle) throws Exception
 	{
-		Tytle = tytle;
+		if(tytle.equals(""))
+		{
+			throw new NullValueException("invalit tytle, NULL VALUE");
+		}else {
+			this.Tytle = tytle;	
+		}
+		
 	}
-	public String getUrl() {
-		return Url;
+	public String getUrl() 
+	{
+		return this.Url;
 	}
-	public void setUrl(String url) {
-		Url = url;
+	public void setUrl(String url) throws Exception
+	{
+		if(url.equals(""))
+		{
+			throw new NullValueException("invalit tytle, NULL VALUE");
+		}else {
+			this.Url = url;	
+		}
 	}
 	public ArrayList<String> getTags() 
 	{
-		return Tags;
+		return this.Tags;
 	}
 	public void setTags(ArrayList<String> tags)
 	{
@@ -43,7 +56,6 @@ public class Video
 	}
 	public void addTagsInVideo(Scanner input) 
 	{
-		
 		boolean isOtherTag,isRightAnswer;
 		String userAnswer;
 		
@@ -60,7 +72,7 @@ public class Video
 		isRightAnswer = false;
 			do
 			{
-				if(userAnswer.equals("tes"))
+				if(userAnswer.equals("yes"))
 				{
 					isRightAnswer=true;
 					
@@ -83,6 +95,6 @@ public class Video
 
 	@Override
 	public String toString() {
-		return " [Tytle=" + getTytle() +  ", Url=" + getUrl()+", Tags=" + getTags() +"]";
+		return " [Tytle=" + this.getTytle() +  ", Url=" + this.getUrl()+", Tags=" + this.getTags() +"]";
 	}
 }

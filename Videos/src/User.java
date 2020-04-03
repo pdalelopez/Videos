@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class User 
 {	
@@ -30,10 +31,12 @@ public class User
 	}
 	public void setUserName(String userName) throws Exception 
 	{
-		if(userName == "")
-			throw new Exception("invalit userName");
-		
-		UserName = userName;
+		if(userName.equals(""))
+		{
+			throw new NullValueException("invalit userName, NULL VALUE");
+		}else {
+			UserName = userName;	
+		}
 	}
 	public String getName() 
 	{
@@ -41,9 +44,12 @@ public class User
 	}
 	public void setName(String name) throws Exception 
 	{
-		if(name == "*")
-			throw new Exception("invalit Name");
-		Name = name;
+		if(name.equals(""))
+		{
+			throw new NullValueException("invalit Name, NULL VALUE");
+		}else {
+			Name = name;	
+		}
 	}
 	public String getLastName() 
 	{
@@ -51,9 +57,12 @@ public class User
 	}
 	public void setLastName(String lastName) throws Exception 
 	{
-		if(lastName == "")
-			throw new Exception("invalit Last Name");
-		LastName = lastName;
+		if(lastName.equals(""))
+		{
+			throw new NullValueException("invalit LastName, NULL VALUE");
+		}else {
+			LastName = lastName;	
+		}
 	}
 	public String getPassWord()
 	{
@@ -61,9 +70,12 @@ public class User
 	}
 	public void setPassWord(String passWord) throws Exception 
 	{
-		if(passWord == "")
-			throw new Exception("invalit Password");
-		PassWord = passWord;
+		if(passWord.equals(""))
+		{
+			throw new NullValueException("invalit PassWord, NULL VALUE");
+		}else {
+			PassWord = passWord;	
+		}
 	}
 	public Date getRegisterDate()
 	{
@@ -96,16 +108,14 @@ public class User
 		getVideoList().add(newVideo);
 		
 	}
-	public Video createVideo(Scanner input) 
+	public Video createVideo(Scanner input) throws Exception
 	{
 		
 		Video newVideo;
 		newVideo = new Video();
 		
-		System.out.println("Url");
-		newVideo.setUrl(input.next());
-		System.out.println("tytle");
-		newVideo.setTytle(input.next());
+		newVideo.setUrl(JOptionPane.showInputDialog("Video's URl"));
+		newVideo.setTytle(JOptionPane.showInputDialog("Video,s Tytle"));
 		newVideo.addTagsInVideo(input);
 		
 		System.out.println("----------------");
