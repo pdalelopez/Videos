@@ -60,6 +60,6 @@ public class Video
 
 	@Override
 	public String toString() {
-		return "Videos--->[Tytle=" + this.getTytle() +  ", Url=" + this.getUrl()+", Tags=" + this.getTags() +"]";
+		return "Videos-->[Tytle=" + this.getTytle() +  ", Url=" + this.getUrl()+", Tags=" + this.getTags() +"]";
 	}
 }

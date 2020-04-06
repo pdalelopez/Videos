@@ -141,7 +141,7 @@ public class Main
 							
 							if (videoCollection.size()==0) 
 							{
-								System.out.println("There are not video match with the key word: "+keyWord);
+								System.out.println("There are not video matching with the key word: "+keyWord);
 							}else
 							{
 								System.out.println(videoCollection);
