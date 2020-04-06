@@ -113,10 +113,47 @@ public class User
 		
 		Video newVideo;
 		newVideo = new Video();
+		boolean isOtherTag,isRightAnswer;
+		String userAnswer;
+		
+		
 		
 		newVideo.setUrl(JOptionPane.showInputDialog("Video's URl"));
 		newVideo.setTytle(JOptionPane.showInputDialog("Video,s Tytle"));
-		newVideo.addTagsInVideo(input);
+		newVideo.setTags(new ArrayList<String>());
+		
+		
+		isOtherTag = true;
+		do 
+		{
+		newVideo.addTagsInVideo(JOptionPane.showInputDialog("Video,s Tag"));
+		
+		System.out.println("Do you want to add other tag?");
+		userAnswer = input.next().toLowerCase();
+		
+		isRightAnswer = false;
+			do
+			{
+				if(userAnswer.equals("yes"))
+				{
+					isRightAnswer=true;
+					isOtherTag = true;
+					
+				}else if(userAnswer.equals("no"))
+				 {
+					isRightAnswer=true;
+					isOtherTag = false;
+					
+					
+				 }else 
+				  {
+					System.out.println("ERROR! Answer should be YES or NO");
+					System.out.println("Do you want to add other tag?");
+					userAnswer = input.next().toLowerCase();
+				  }	
+			} while (!isRightAnswer);
+		
+		} while (isOtherTag);
 		
 		System.out.println("----------------");
 		System.out.println(newVideo);

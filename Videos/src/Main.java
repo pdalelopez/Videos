@@ -57,7 +57,7 @@ public class Main
 				
 				try
 				{
-					newUser = createUser(input);
+					newUser = createUser();
 					usersList.add(newUser);
 					System.out.println(usersList.toString());
 				} catch (Exception e)
@@ -118,6 +118,34 @@ public class Main
 						
 						case "3":
 							System.out.println("Enter one word");
+							ArrayList<Video> videoCollection = new ArrayList<Video>();
+							String keyWord = input.next();
+							
+							for (Video userVideo : loggedUser.getVideoList())
+							{
+								if(userVideo.getTytle().contains(keyWord)) 
+								{
+									videoCollection.add(userVideo);
+								}else 
+								{
+									for (String videoTag : userVideo.getTags())
+									{
+										if(videoTag.contains(keyWord)) 
+										{
+											videoCollection.add(userVideo);
+											break;
+										}
+									}
+								}
+							}
+							
+							if (videoCollection.size()==0) 
+							{
+								System.out.println("There are not video match with the key word: "+keyWord);
+							}else
+							{
+								System.out.println(videoCollection);
+							}
 							
 							break;
 						
@@ -181,7 +209,7 @@ public class Main
 	
 
 	// create new user
-	public static User createUser(Scanner input) throws Exception 
+	public static User createUser() throws Exception 
 	{
 		User newUser;
 		newUser = new User();

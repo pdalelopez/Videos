@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Video 
 {
@@ -54,47 +53,13 @@ public class Video
 	{
 		this.Tags = tags;
 	}
-	public void addTagsInVideo(Scanner input) 
+	public void addTagsInVideo(String tag) 
 	{
-		boolean isOtherTag,isRightAnswer;
-		String userAnswer;
-		
-		isOtherTag = true;
-		do 
-		{
-		System.out.println("Enter a new tag");
-		getTags().add(input.next());
-		
-		
-		System.out.println("Do you want to add other tag?");
-		userAnswer = input.next().toLowerCase();
-		
-		isRightAnswer = false;
-			do
-			{
-				if(userAnswer.equals("yes"))
-				{
-					isRightAnswer=true;
-					
-				}else if(userAnswer.equals("no"))
-				 {
-					isRightAnswer=true;
-					isOtherTag = false;
-					
-					
-				 }else 
-				  {
-					System.out.println("ERROR! Answer should be YES or NO");
-					System.out.println("Do you want to add other tag?");
-					userAnswer = input.next().toLowerCase();
-				  }	
-			} while (!isRightAnswer);
-		
-		} while (isOtherTag);
+	getTags().add(tag);	
 	}
 
 	@Override
 	public String toString() {
-		return " [Tytle=" + this.getTytle() +  ", Url=" + this.getUrl()+", Tags=" + this.getTags() +"]";
+		return "Videos--->[Tytle=" + this.getTytle() +  ", Url=" + this.getUrl()+", Tags=" + this.getTags() +"]";
 	}
 }
